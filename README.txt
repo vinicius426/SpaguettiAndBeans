@@ -44,7 +44,7 @@ After installation, Android Studio will open its homepage:
 Once all of the above applications have been installed successfully
 and a virtual device has been created and is currently running:
 
-- open the project path in the explorer (don't open the project folder)
+- open the project folder
 - copy the path from the address bar
 - run the command prompt and type 'cd' (adding a space after the word)
 - paste the address in the command prompt.
