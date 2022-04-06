@@ -1,50 +1,30 @@
-import React, {useEffect} from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import {StreamChat} from 'stream-chat'
-
-const API_KEY = 'yrnv8qb72qq3'
-const client = StreamChat.getInstance(API_KEY);
+import React from "react";
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import DetailsScreen from "./src/screens/DetailsScreen";
 
 export default function App() {
-
-  useEffect(() => {
-      const connectUser = async () => {
-
-        await client.connectUser(
-            {
-              id: 'Vinnie',
-              name: 'Vinnie Silva',
-              image: 'https://i.imgur.com/fR9Jz14.png',
-            },
-            client.devToken('Vinnie')
-
-        );
-          const channel = client.channel('messaging', 'spaghettiAndBeans', {name: 'spaghettiAndBeans'});
-          await channel.watch();
-
-console.log('User Connected')
-
-      };
-
-    connectUser();
-
-    return() => client.disconnectUser();
-  },[])
+  const Stack = createNativeStackNavigator();
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: "Trade Cards",
+            headerStyle: {
+              backgroundColor: "#f2790f",
+              justifyContent: "center",
+              alignItems: "center",
+            },
+          }}
+        />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
