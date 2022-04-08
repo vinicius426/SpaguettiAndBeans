@@ -1,4 +1,21 @@
 INSTRUCTIONS
+How to open the app on your Phone
+
+-----------------------------------------------------------------------
+Firstly, if Node.js hasn't been installed the best version to get is 14.17.4.
+If a newer version has already been installed it's recommended to reinstall the
+app with the listed version above as the older version supports all of android studio's features.
+
+- open the project folder
+- copy the path from the address bar
+- run the command prompt and type 'cd' (adding a space after the word)
+- paste the address in the command prompt.
+
+Open up your device and follow the steps below.
+- download 'Expo Go' app from the app store
+- scan the QR code
+_______________________________________________________________________
+
 How to Open the app using Android Studio
 
 Setting up Node.js and Android Studio
