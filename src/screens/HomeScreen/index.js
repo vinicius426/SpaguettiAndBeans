@@ -7,7 +7,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const API_KEY = "yrnv8qb72qq3";
 const client = StreamChat.getInstance(API_KEY);
-const stack = createNativeStackNavigator;
+const Size = 45;
+const UpSize = 50;
 
 export default function HomeScreen({ navigation }) {
   useEffect(() => {
@@ -35,48 +36,43 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-        }}
-      >
-        <View>
-          <Text
-            style={{
-              color: "#f2790f",
-              size: 15,
-              fontWeight: "bold",
-            }}
-          >
-            Profile
-          </Text>
-          <Icon
-            type="ionicon"
-            name="person-circle-outline"
-            size={45}
-            color="blue"
-            onPress={() => navigation.navigate("DetailsScreen")}
-          />
-        </View>
-        <View>
-          <Text
-            style={{
-              color: "#f2790f",
-              size: 15,
-              fontWeight: "bold",
-            }}
-          >
-            Log Out
-          </Text>
-          <Icon
-            type="materialicons"
-            name="exit-to-app"
-            size={45}
-            color="blue"
-          />
-        </View>
+      <View>
+        <Text
+          style={{
+            color: "#f2790f",
+            size: 15,
+            fontWeight: "bold",
+          }}
+        >
+          Profile
+        </Text>
+        <Icon
+          type="ionicon"
+          name="person-circle-outline"
+          size={Size}
+          color="blue"
+          onPress={() => navigation.navigate("DetailsScreen")}
+        />
       </View>
+
+      <View>
+        <Text
+          style={{
+            color: "#f2790f",
+            size: 15,
+            fontWeight: "bold",
+          }}
+        >
+          Log Out
+        </Text>
+        <Icon
+          type="materialicons"
+          name="exit-to-app"
+          size={UpSize}
+          color="blue"
+        />
+      </View>
+
       <View>
         <Text
           style={{
@@ -90,7 +86,7 @@ export default function HomeScreen({ navigation }) {
         <Icon
           type="ionicon"
           name="chatbubble-ellipses"
-          size={45}
+          size={Size}
           color="blue"
           onPress={() => navigation.navigate("ContactScreen")}
         />

@@ -1,6 +1,7 @@
 import React from "react";
 import { Pressable, View, Text, Alert } from "react-native";
 import { styles } from "../../style";
+import AlertSend from "./Alert";
 
 const TradeScreen = (props) => {
   const { title = "Send" } = props;
@@ -40,15 +41,11 @@ const TradeScreen = (props) => {
           flex: 1,
         }}
       >
-        <Pressable
-          style={styles.button}
-          onPress={() => Alert.alert("Simple Button pressed")}
-        >
+        <Pressable style={styles.button} onPress={AlertSend}>
           <Text style={styles.text}>{title}</Text>
         </Pressable>
       </View>
     </View>
   );
 };
-
 export default TradeScreen;
