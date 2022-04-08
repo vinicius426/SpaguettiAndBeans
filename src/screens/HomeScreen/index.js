@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { Text, View, Button } from "react-native";
+import { Text, View } from "react-native";
 import { StreamChat } from "stream-chat";
 import { styles } from "./style";
 import { Icon } from "@rneui/themed";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const API_KEY = "yrnv8qb72qq3";
@@ -68,7 +67,7 @@ export default function HomeScreen({ navigation }) {
               fontWeight: "bold",
             }}
           >
-            Profile
+            Log Out
           </Text>
           <Icon
             type="materialicons"
@@ -86,13 +85,14 @@ export default function HomeScreen({ navigation }) {
             fontWeight: "bold",
           }}
         >
-          Profile
+          Contact Us
         </Text>
         <Icon
           type="ionicon"
           name="chatbubble-ellipses"
           size={45}
           color="blue"
+          onPress={() => navigation.navigate("ContactScreen")}
         />
       </View>
     </View>

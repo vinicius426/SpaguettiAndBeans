@@ -1,9 +1,8 @@
 import React from "react";
-import { Pressable, View, Text, Alert } from "react-native";
+import { View, Text } from "react-native";
 import { styles } from "../../style";
 
-const TradeScreen = (props) => {
-  const { title = "Send" } = props;
+const TraceScreen = () => {
   return (
     <View
       style={[
@@ -18,7 +17,7 @@ const TradeScreen = (props) => {
           justifyContent: "center",
           alignItems: "center",
           backgroundColor: "yellow",
-          flex: 10,
+          flex: 8,
         }}
       >
         <View
@@ -31,24 +30,8 @@ const TradeScreen = (props) => {
           <Text>Trade Screen!</Text>
         </View>
       </View>
-      <View
-        style={{
-          justifyContent: "center",
-          flexDirection: "row",
-          alignItems: "center",
-          backgroundColor: "blue",
-          flex: 1,
-        }}
-      >
-        <Pressable
-          style={styles.button}
-          onPress={() => Alert.alert("Simple Button pressed")}
-        >
-          <Text style={styles.text}>{title}</Text>
-        </Pressable>
-      </View>
     </View>
   );
 };
 
-export default TradeScreen;
+export default TraceScreen;

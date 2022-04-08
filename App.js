@@ -3,11 +3,11 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import TraceScreen from "./src/screens/TraceScreen/TraceScreen";
-import TradeScreen from "./src/screens/TradeScreen";
-import ChatScreen from "./src/screens/ChatScreen/ChatScreen";
 import { Icon } from "@rneui/themed";
+import TraceScreen from "./src/screens/TraceScreen";
+import ChatScreen from "./src/screens/ChatScreen";
 import HomeNav from "./src/screens/HomeScreen/HomeNav";
+import TradeScreen from "./src/screens/TradeScreen";
 
 const Tab = createBottomTabNavigator();
 const Size = 35;
@@ -15,16 +15,13 @@ const Size = 35;
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
+      <Tab.Navigator>
         <Tab.Screen
           name="Home"
           component={HomeNav}
           options={{
             title: "Welcome",
+            headerShown: false,
             headerTitleAlign: "center",
             headerTintColor: "#fff",
             headerStyle: {
