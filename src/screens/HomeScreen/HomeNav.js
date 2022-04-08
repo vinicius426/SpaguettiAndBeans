@@ -11,11 +11,7 @@ const Tab = createBottomTabNavigator();
 
 export default function HomeNav() {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
+    <Stack.Navigator>
       <Stack.Screen
         name="Home"
         component={HomeScreen}
@@ -28,7 +24,18 @@ export default function HomeNav() {
           },
         }}
       />
-      <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Screen
+        name="DetailsScreen"
+        component={DetailsScreen}
+        options={{
+          title: "Profile",
+          headerTitleAlign: "center",
+          headerTintColor: "#fff",
+          headerStyle: {
+            backgroundColor: "#f2790f",
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Button, View, Text } from "react-native";
 
 const DetailsScreen = () => {
   return (

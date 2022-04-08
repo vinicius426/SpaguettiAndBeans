@@ -15,7 +15,11 @@ const Size = 35;
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         <Tab.Screen
           name="Home"
           component={HomeNav}
