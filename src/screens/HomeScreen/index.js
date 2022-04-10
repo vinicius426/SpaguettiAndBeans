@@ -40,7 +40,7 @@ export default function HomeScreen({ navigation }) {
         <Text
           style={{
             color: "#f2790f",
-            size: 15,
+            fontSize: 15,
             fontWeight: "bold",
           }}
         >
@@ -59,7 +59,7 @@ export default function HomeScreen({ navigation }) {
         <Text
           style={{
             color: "#f2790f",
-            size: 15,
+            fontSize: 15,
             fontWeight: "bold",
           }}
         >
@@ -77,7 +77,7 @@ export default function HomeScreen({ navigation }) {
         <Text
           style={{
             color: "#f2790f",
-            size: 15,
+            fontSize: 15,
             fontWeight: "bold",
           }}
         >

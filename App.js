@@ -17,7 +17,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen
-          name="Home"
+          name="HomeNav"
           component={HomeNav}
           options={{
             title: "Welcome",
