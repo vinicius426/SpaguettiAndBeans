@@ -1,3 +1,6 @@
+GitHub Repository:
+https://github.com/vinicius426/SpaguettiAndBeans
+
 INSTRUCTIONS
 How to open the app on your Phone
 
