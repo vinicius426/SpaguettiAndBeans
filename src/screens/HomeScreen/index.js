@@ -50,7 +50,7 @@ export default function HomeScreen({ navigation }) {
           type="ionicon"
           name="person-circle-outline"
           size={Size}
-          color="blue"
+          color="#0d96ba"
           onPress={() => navigation.navigate("DetailsScreen")}
         />
       </View>
@@ -69,7 +69,7 @@ export default function HomeScreen({ navigation }) {
           type="materialicons"
           name="exit-to-app"
           size={UpSize}
-          color="blue"
+          color="#0d96ba"
         />
       </View>
 
@@ -87,7 +87,7 @@ export default function HomeScreen({ navigation }) {
           type="ionicon"
           name="chatbubble-ellipses"
           size={Size}
-          color="blue"
+          color="#0d96ba"
           onPress={() => navigation.navigate("ContactScreen")}
         />
       </View>
