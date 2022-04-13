@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useChatContext } from "stream-chat-expo";
 import AuthContext from "../../contexts/Authentication";
 
@@ -17,10 +17,10 @@ const UserListItem = ({user}) => {
         navigation.navigate('ChannelScreen', {channel})
     }
     return(
-        <Pressable onPress={onPress} style={styles.root}>
+        <TouchableOpacity onPress={onPress} style={styles.root}>
             <Image style={styles.image} source={{uri: user.image}}/>
             <Text>{user.name}</Text>
-        </Pressable>
+        </TouchableOpacity>
     )
 }
 

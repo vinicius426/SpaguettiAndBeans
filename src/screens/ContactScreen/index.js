@@ -10,7 +10,7 @@ const ContactScreen = () => {
 
   const { client } = useChatContext();
 
-  const fetchUsers = async() => {
+  const fetchUsers = async () => {
     setIsLoading(true)
     const response = await client.queryUsers({});
     setUsers(response.users);
@@ -19,15 +19,15 @@ const ContactScreen = () => {
 
   useEffect(() => {
     fetchUsers();
-  },[]);
+  }, []);
 
   return (
     <View style={styles.container}>
       <FlatList data={users}
-                renderItem={({item}) => <UserListItem user={item}/>}
-                refreshing={isLoading}
-                onRefresh={fetchUsers}
-                />
+        renderItem={({ item }) => <UserListItem user={item} />}
+        refreshing={isLoading}
+        onRefresh={fetchUsers}
+      />
     </View>
   );
 };
@@ -36,7 +36,7 @@ export default ContactScreen;
 
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     alignItems: 'stretch',
     justifyContent: 'center'

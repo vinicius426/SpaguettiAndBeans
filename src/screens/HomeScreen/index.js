@@ -1,72 +1,39 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Text, View } from "react-native";
-
 import { styles } from "./style";
 import { Icon } from "@rneui/themed";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useChatContext } from "stream-chat-expo";
 
 const Size = 45
-const UpSize = 45
 export default function HomeScreen({ navigation }) {
-
+  const ButtonComponent = ({ iconType, iconName, onPress, textField }) => {
+    return (
+      <View>
+        <Text style={styles.buttonComponent}>
+          {textField}
+        </Text>
+        <Icon
+          type={iconType}
+          name={iconName}
+          size={Size}
+          color="#0d96ba"
+          onPress={onPress} />
+      </View>
+    )
+  }
   return (
     <View style={styles.container}>
-      <View>
-        <Text
-          style={{
-            color: "#f2790f",
-            fontSize: 15,
-            fontWeight: "bold",
-          }}
-        >
-          Profile
-        </Text>
-        <Icon
-          type="ionicon"
-          name="person-circle-outline"
-          size={Size}
-          color="#0d96ba"
-          onPress={() => navigation.navigate("DetailsScreen")}
-        />
-      </View>
-
-      <View>
-        <Text
-          style={{
-            color: "#f2790f",
-            fontSize: 15,
-            fontWeight: "bold",
-          }}
-        >
-          Log Out
-        </Text>
-        <Icon
-          type="materialicons"
-          name="exit-to-app"
-          size={UpSize}
-          color="#0d96ba"
-        />
-      </View>
-
-      <View>
-        <Text
-          style={{
-            color: "#f2790f",
-            fontSize: 15,
-            fontWeight: "bold",
-          }}
-        >
-          Contact Us
-        </Text>
-        <Icon
-          type="ionicon"
-          name="chatbubble-ellipses"
-          size={Size}
-          color="#0d96ba"
-          onPress={() => navigation.navigate("ContactScreen")}
-        />
-      </View>
+      <ButtonComponent iconType="ionicon"
+        iconName="person-circle-outline"
+        onPress={() => navigation.navigate("DetailsScreen")}
+        textField="Profile" />
+      <ButtonComponent iconType="materialicons"
+        iconName="exit-to-app"
+        onPress={() => { }}
+        textField="LogOut" />
+      <ButtonComponent iconType="ionicon"
+        iconName="chatbubble-ellipses"
+        onPress={() => { }}
+        textField="Contact Us" />
     </View>
   );
 }

@@ -1,14 +1,10 @@
 import React from "react";
-import { StyleSheet } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from ".";
 import DetailsScreen from "../DetailsScreen";
 import ContactScreen from "../ContactScreen";
 
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
 
 export default function HomeNav() {
   return (
@@ -23,8 +19,7 @@ export default function HomeNav() {
           headerStyle: {
             backgroundColor: "#f2790f",
           },
-        }}
-      />
+        }} />
       <Stack.Screen
         name="DetailsScreen"
         component={DetailsScreen}
@@ -35,8 +30,7 @@ export default function HomeNav() {
           headerStyle: {
             backgroundColor: "#f2790f",
           },
-        }}
-      />
+        }} />
       <Stack.Screen
         name="ContactScreen"
         component={ContactScreen}
@@ -47,8 +41,7 @@ export default function HomeNav() {
           headerStyle: {
             backgroundColor: "#f2790f",
           },
-        }}
-      />
+        }} />
     </Stack.Navigator>
   );
 }

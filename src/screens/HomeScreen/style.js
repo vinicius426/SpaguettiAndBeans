@@ -8,4 +8,9 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-evenly",
   },
+  buttonComponent: {
+    color: "#f2790f",
+    fontSize: 15,
+    fontWeight: "bold",
+  }
 });
