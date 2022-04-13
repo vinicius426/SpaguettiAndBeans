@@ -1,31 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { FlatList, Text, View, StyleSheet } from "react-native";
 import { useChatContext } from "stream-chat-expo";
+import UserListItem from "../../components/UserListItem";
 
 
 const ContactScreen = () => {
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
 
-  const {client} = useChatContext
+  const { client } = useChatContext();
 
-  console.log(client)
+  const fetchUsers = async() => {
+    setIsLoading(true)
+    const response = await client.queryUsers({});
+    setUsers(response.users);
+    setIsLoading(false)
+  };
 
-  // useEffect(() => {
-  //   const fetchUsers = async() => {
-  //     const response = await client.queryUsers({});
-  //     console.log('RESPONSE', response)
-  //   };
+  useEffect(() => {
+    fetchUsers();
+  },[]);
 
-  //   fetchUsers();
-  // },[]);
   return (
-    <View>
-      <Text>
-        TESTE
-      </Text>
+    <View style={styles.container}>
+      <FlatList data={users}
+                renderItem={({item}) => <UserListItem user={item}/>}
+                refreshing={isLoading}
+                onRefresh={fetchUsers}
+                />
     </View>
-
   );
 };
 
 export default ContactScreen;
+
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'center'
+  }
+
+})

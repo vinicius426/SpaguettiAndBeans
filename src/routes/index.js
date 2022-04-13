@@ -10,10 +10,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignupScreen from "../screens/SignupScreen";
 import AuthContext from "../contexts/Authentication";
 import ContactScreen from "../screens/ContactScreen";
+import ChannelScreen from "../screens/ChannelScreen";
 
 const Tab = createBottomTabNavigator();
 const Size = 35;
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
+const ChatStack = createNativeStackNavigator();
 
 export default function Routes() {
 
@@ -92,7 +94,6 @@ export default function Routes() {
         />
         <Tab.Screen
           name="Chat"
-          component={ChatScreen}
           options={{
             title: "Chat",
             headerTitleAlign: "center",
@@ -109,7 +110,22 @@ export default function Routes() {
               ></Icon>
             ),
           }}
-        />
+        >
+          {props => (
+            <ChatStack.Navigator>
+              <ChatStack.Screen
+                name="ChatScreen"
+                component={ChatScreen}
+              />
+              <ChatStack.Screen
+                name="ChannelScreen"
+                component={ChannelScreen}
+              />
+            </ChatStack.Navigator>
+          )}
+
+
+        </Tab.Screen>
       </Tab.Navigator>
     )}
     </>
