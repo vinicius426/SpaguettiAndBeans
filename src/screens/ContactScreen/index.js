@@ -1,36 +1,30 @@
-import React from "react";
-import { Button, View, Text } from "react-native";
-import { styles } from "../../style";
+import React, { useEffect, useState } from "react";
+import { Text, View } from "react-native";
+import { useChatContext } from "stream-chat-expo";
+
 
 const ContactScreen = () => {
+  const [users, setUsers] = useState([]);
+
+  const {client} = useChatContext
+
+  console.log(client)
+
+  // useEffect(() => {
+  //   const fetchUsers = async() => {
+  //     const response = await client.queryUsers({});
+  //     console.log('RESPONSE', response)
+  //   };
+
+  //   fetchUsers();
+  // },[]);
   return (
-    <View
-      style={[
-        styles.container,
-        {
-          flexDirection: "column",
-        },
-      ]}
-    >
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "yellow",
-          flex: 8,
-        }}
-      >
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "red",
-          }}
-        >
-          <Text>Trade Screen!</Text>
-        </View>
-      </View>
+    <View>
+      <Text>
+        TESTE
+      </Text>
     </View>
+
   );
 };
 

@@ -1,104 +1,49 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React, {useEffect, useState, useContext} from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Icon } from "@rneui/themed";
-import TraceScreen from "./src/screens/TraceScreen";
-import ChatScreen from "./src/screens/ChatScreen";
-import HomeNav from "./src/screens/HomeScreen/HomeNav";
-import TradeScreen from "./src/screens/TradeScreen";
+import Routes from "./src/routes";
+import { StreamChat } from "stream-chat";
+import { OverlayProvider, Chat, ChannelList, Channel, MessageList, MessageInput } from "stream-chat-expo";
+import { Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import SignupScreen from "./src/screens/SignupScreen";
+import AuthContext from "./src/contexts/Authentication";
 
-const Tab = createBottomTabNavigator();
-const Size = 35;
+
+const API_KEY = "yrnv8qb72qq3";
+const client = StreamChat.getInstance(API_KEY);
+const Size = 45;
+const UpSize = 50;
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="HomeNav"
-          component={HomeNav}
-          options={{
-            title: "Welcome",
-            headerShown: false,
-            headerTitleAlign: "center",
-            headerTintColor: "#fff",
-            headerStyle: {
-              backgroundColor: "#f2790f",
-            },
-            tabBarIcon: ({ color }) => (
-              <Icon
-                type="ionicons"
-                name="home"
-                size={Size}
-                color={color}
-              ></Icon>
-            ),
-          }}
-        />
 
-        <Tab.Screen
-          name="Trace"
-          component={TraceScreen}
-          options={{
-            title: "Contact Tracing",
-            headerTitleAlign: "center",
-            headerTintColor: "#fff",
-            headerStyle: {
-              backgroundColor: "#f2790f",
-            },
-            tabBarIcon: ({ color }) => (
-              <Icon
-                type="ionicon"
-                name="people-circle-outline"
-                size={Size}
-                color={color}
-              ></Icon>
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Trade"
-          component={TradeScreen}
-          options={{
-            title: "Trade Cards",
-            headerTitleAlign: "center",
-            headerTintColor: "#fff",
-            headerStyle: {
-              backgroundColor: "#f2790f",
-            },
-            tabBarIcon: ({ color }) => (
-              <Icon
-                type="materialicons"
-                name="compare-arrows"
-                size={Size}
-                color={color}
-              ></Icon>
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Chat"
-          component={ChatScreen}
-          options={{
-            title: "Chat",
-            headerTitleAlign: "center",
-            headerTintColor: "#fff",
-            headerStyle: {
-              backgroundColor: "#f2790f",
-            },
-            tabBarIcon: ({ color }) => (
-              <Icon
-                type="ionicon"
-                name="chatbubbles-sharp"
-                size={Size}
-                color={color}
-              ></Icon>
-            ),
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+  const [userId, setUserId] = useState('')
+  const [selectedChannel, setSelectedChannel] = useState(null)
+
+  useEffect(() => {
+    return () => client.disconnectUser();
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{userId, setUserId}}>
+      <OverlayProvider>
+        <Chat client={client}>
+          <NavigationContainer>
+            <Routes/>
+          </NavigationContainer>
+        </Chat>
+
+        {/*
+          {selectedChannel ? (
+          <Channel channel={selectedChannel}>
+            <MessageList/>
+            <MessageInput/>
+            <Text style={{margin: 50}} onPress={()=>setSelectedChannel(null)}>Go back</Text>
+          </Channel>
+        ): }
+      </Chat> */}
+
+      </OverlayProvider>
+    </AuthContext.Provider>
+
   );
 }

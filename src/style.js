@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#f2790f",
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: 8
   },
 
   text: {
