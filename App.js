@@ -1,10 +1,10 @@
+import 'react-native-gesture-handler';
 import React, { useEffect, useState } from "react";
 import Routes from "./src/routes";
 import { StreamChat } from "stream-chat";
 import { OverlayProvider, Chat } from "stream-chat-expo";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthContext from "./src/contexts/Authentication";
-import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 

@@ -5,6 +5,7 @@ import { useChatContext } from 'stream-chat-expo'
 import AuthContext from "../../contexts/Authentication";
 import React, { useContext } from "react";
 import { styles } from './styles'
+import { CustomButton } from "../../components/CustomButton";
 
 const SignupScreen = () => {
     const [username, setUsername] = useState('')
@@ -17,7 +18,6 @@ const SignupScreen = () => {
             {
                 id: username,
                 name: fullName,
-                // image: "https://i.imgur.com/fR9Jz14.png",
             },
             client.devToken(username)
         );
@@ -46,12 +46,7 @@ const SignupScreen = () => {
                     style={styles.input}
                     placeholder="Full name" />
             </View>
-            <TouchableOpacity onPress={signUp}
-                style={styles.button}>
-                <Text>
-                    Sign up
-                </Text>
-            </TouchableOpacity>
+            <CustomButton onPress={signUp} />
         </SafeAreaView>
     )
 }
