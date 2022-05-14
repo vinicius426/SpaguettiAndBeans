@@ -2,16 +2,15 @@ import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "@rneui/themed";
 import ChatScreen from "../screens/ChatScreen";
-import HomeNav from "../screens/HomeScreen/HomeNav";
-import TradeScreen from '../screens/TradeScreen/';
+import TradeScreen from '../screens/TradeScreen';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignupScreen from "../screens/SignupScreen";
 import AuthContext from "../contexts/Authentication";
 import ContactScreen from "../screens/ContactScreen";
 import ChannelScreen from "../screens/ChannelScreen";
-import { theme } from "../Styles/theme";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawer from "../components/CustomDrawer";
+import { TicTacToeGame } from "../screens/TicTacToeScreen";
 
 const Tab = createBottomTabNavigator();
 const Size = 35;
@@ -32,7 +31,7 @@ export default function Routes() {
       ) :
 
         <Drawer.Navigator screenOptions={{ headerShown: false }} drawerContent={props => <CustomDrawer{...props} />}>
-          <Drawer.Screen name="TabNavigator" component={TabNavigator} />
+          <Drawer.Screen name="Contacts" component={TabNavigator} />
 
         </Drawer.Navigator>
       }
@@ -43,28 +42,6 @@ export default function Routes() {
 function TabNavigator() {
   return (
     <Tab.Navigator>
-      <Tab.Screen
-        name="HomeNav"
-        component={HomeNav}
-        options={{
-          title: "Welcome",
-          headerShown: false,
-          headerTitleAlign: "center",
-          headerTintColor: theme.colors.text.primary,
-          headerStyle: {
-            backgroundColor: "#f2790f",
-          },
-          tabBarIcon: ({ color }) => (
-            <Icon
-              type="ionicons"
-              name="home"
-              size={Size}
-              color={color}
-            ></Icon>
-          ),
-        }}
-      />
-
       <Tab.Screen
         name="Trace"
         component={ContactScreen}
@@ -84,6 +61,27 @@ function TabNavigator() {
             ></Icon>
           ),
         }}
+      />
+      <Tab.Screen
+        name="Game"
+        component={TicTacToeGame}
+        options={{
+          title: "Game",
+          headerTitleAlign: "center",
+          headerTintColor: "#fff",
+          headerStyle: {
+            backgroundColor: "#f2790f",
+          },
+          tabBarIcon: ({ color }) => (
+            <Icon
+              type="ionicon"
+              name="md-game-controller-outline"
+              size={Size}
+              color={color}
+            ></Icon>
+          ),
+        }}
+
       />
       <Tab.Screen
         name="Trade"
@@ -125,7 +123,7 @@ function TabNavigator() {
         }}
       >
         {props => (
-          <ChatStack.Navigator>
+          <ChatStack.Navigator options={{ headerShown: false }}>
             <ChatStack.Screen
               name="ChatScreen"
               component={ChatScreen}

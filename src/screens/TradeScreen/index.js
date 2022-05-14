@@ -3,53 +3,48 @@ import { Pressable, View, Text, ScrollView, TextInput, FlatList } from "react-na
 import { styles } from "../../style";
 import AlertSend from "./Alert";
 import { Icon } from "@rneui/themed";
-import { Avatar } from '@rneui/themed';
 import { useChatContext } from "stream-chat-expo";
 
-const TradeScreen = (props) => {
+const TradeScreen = () => {
 
   const [users, setUsers] = useState([]);
-
   const { client } = useChatContext();
 
   const fetchUsers = async () => {
-    setIsLoading(true)
     const response = await client.queryUsers({});
     setUsers(response.users);
-    setIsLoading(false)
   };
 
   fetchUsers();
 
-  console.log(users)
+  // const getInitials = (fullName) => {
+  //   const allNames = fullName.trim().split(' ');
+  //   const initials = allNames.reduce((acc, curr, index) => {
+  //     if (index === 0 || index === allNames.length - 1) {
+  //       acc = `${acc}${curr.charAt(0).toUpperCase()}`;
+  //     }
+  //     return acc;
+  //   }, '');
+  //   return initials;
+  // }
 
-  const getInitials = (fullName) => {
-    const allNames = fullName.trim().split(' ');
-    const initials = allNames.reduce((acc, curr, index) => {
-      if (index === 0 || index === allNames.length - 1) {
-        acc = `${acc}${curr.charAt(0).toUpperCase()}`;
-      }
-      return acc;
-    }, '');
-    return initials;
-  }
+  // const RenderAvatar = (name) => {
+  //   const allNames = name.trim().split(' ');
+  //   const initials = allNames.reduce((acc, curr, index) => {
+  //     if (index === 0 || index === allNames.length - 1) {
+  //       acc = `${acc}${curr.charAt(0).toUpperCase()}`;
+  //     }
+  //     return initials;
+  //   }, '');
 
-  const RenderAvatar = (name) => {
-    const initials = getInitials(name)
-    return (
-      // <Avatar
-      //   size={250}
-      //   rounded
-      //   title={initials}
-      //   containerStyle={{ backgroundColor: '#3d4db7' }} />
-
-      <View>
-        <Text>
-          {initials}
-        </Text>
-      </View>
-    )
-  }
+  //   return (
+  //     <View>
+  //       <Text>
+  //         {initials}
+  //       </Text>
+  //     </View>
+  //   )
+  // }
 
   return (
 
@@ -62,7 +57,7 @@ const TradeScreen = (props) => {
           flexDirection: 'row', alignItems: 'center', padding: 10
         }}>
           <Icon type="meterial"
-            size='30'
+            size={30}
             name="credit-card"
             color="#0d96ba" />
           <Text style={{ fontSize: 20, color: "#0d96ba" }}>= 10</Text>
@@ -85,7 +80,7 @@ const TradeScreen = (props) => {
       <View style={{
         alignItems: 'center', justifyContent: 'center', paddingVertical: 50
       }}>
-        <FlatList horizontal data={users} renderItem={RenderAvatar} />
+        {/* <FlatList horizontal data={users} renderItem={users.name} /> */}
       </View>
       <View style={{
         justifyContent: 'center', alignItems: 'center', padding: 10

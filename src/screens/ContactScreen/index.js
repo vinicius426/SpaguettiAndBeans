@@ -14,12 +14,15 @@ const ContactScreen = () => {
     setIsLoading(true)
     const response = await client.queryUsers({});
     setUsers(response.users);
+    console.log(users)
     setIsLoading(false)
   };
 
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  console.log(users)
 
   return (
     <View style={styles.container}>

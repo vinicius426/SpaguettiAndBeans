@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useEffect, useState } from "react";
-import Routes from "./src/routes";
+import Routes from "./src/routes/app.routes";
 import { StreamChat } from "stream-chat";
 import { OverlayProvider, Chat } from "stream-chat-expo";
 import { NavigationContainer } from "@react-navigation/native";
