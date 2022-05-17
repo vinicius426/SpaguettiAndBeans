@@ -68,7 +68,7 @@ const TradeScreen = () => {
         </View>
         <View style={{ height: 350, width: '100%' }}>
           <FlatList horizontal data={users}
-            renderItem={({ item }) => <Avatar user={item} onPress={ } />} />
+            renderItem={({ item }) => <Avatar user={item} />} />
         </View>
       </View>
 
