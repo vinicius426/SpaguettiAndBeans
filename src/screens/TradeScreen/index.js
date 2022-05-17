@@ -9,7 +9,8 @@ const TradeScreen = () => {
 
   const [users, setUsers] = useState([]);
   const { client } = useChatContext();
-  const cards = 250;
+  const [text, setText] = useState('');
+  let cards = 250;
 
   const fetchUsers = async () => {
     const response = await client.queryUsers({});
@@ -63,7 +64,8 @@ const TradeScreen = () => {
           <Text style={{ fontSize: 20, color: "#0d96ba" }}>
             Send
           </Text>
-          <TextInput style={{ backgroundColor: 'white', paddingHorizontal: 10 }} />
+          <TextInput onChangeText={newText => setText(newText)}
+            style={{ backgroundColor: 'white', paddingHorizontal: 10 }} />
           <Text style={{ fontSize: 20, color: "#0d96ba" }}> card(s) to:</Text>
         </View>
         <View style={{ height: 350, width: '100%' }}>
