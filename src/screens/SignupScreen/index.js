@@ -6,6 +6,7 @@ import AuthContext from "../../contexts/Authentication";
 import React, { useContext } from "react";
 import { styles } from './styles'
 import { CustomButton } from "../../components/CustomButton";
+import { Image } from "react-native";
 
 const SignupScreen = () => {
     const [username, setUsername] = useState('')
@@ -34,6 +35,10 @@ const SignupScreen = () => {
     };
     return (
         <SafeAreaView style={styles.root}>
+            <Text style={{ fontSize: 90, color: '#34A6BF' }}>
+                Spaghetti and Beans
+            </Text>
+            <Image source={require('../../../assets/logo_new.png')} style={{ position: 'relative', height: 200, width: 200, alignSelf: 'flex-end' }} />
             <View style={styles.inputContainer}>
                 <TextInput value={username}
                     onChangeText={setUsername}

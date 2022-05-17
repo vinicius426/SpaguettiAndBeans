@@ -242,7 +242,7 @@ export const TicTacToeGame = () => {
                         onPress={() => setGameMode("LOCAL")}
                         style={[
                             styles.button,
-                            { backgroundColor: gameMode === "LOCAL" ? "#4F5686" : "#191F24" },
+                            { backgroundColor: gameMode === "LOCAL" ? "#f2790f" : "#191F24" },
                         ]}
                     >
                         Local
@@ -253,7 +253,7 @@ export const TicTacToeGame = () => {
                             styles.button,
                             {
                                 backgroundColor:
-                                    gameMode === "BOT_EASY" ? "#4F5686" : "#191F24",
+                                    gameMode === "BOT_EASY" ? "#f2790f" : "#191F24",
                             },
                         ]}
                     >
@@ -265,7 +265,7 @@ export const TicTacToeGame = () => {
                             styles.button,
                             {
                                 backgroundColor:
-                                    gameMode === "BOT_MEDIUM" ? "#4F5686" : "#191F24",
+                                    gameMode === "BOT_MEDIUM" ? "#f2790f" : "#191F24",
                             },
                         ]}
                     >
