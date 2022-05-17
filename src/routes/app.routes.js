@@ -46,7 +46,7 @@ function TabNavigator() {
         name="Trace"
         component={ContactScreen}
         options={{
-          title: "Contact Tracing",
+          title: "Contacts",
           headerTitleAlign: "center",
           headerTintColor: "#fff",
           headerStyle: {

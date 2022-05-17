@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Pressable, View, Text, ScrollView, TextInput, FlatList } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Pressable, View, Text, Alert, TextInput, FlatList } from "react-native";
 import { styles } from "../../style";
-import AlertSend from "./Alert";
+import Avatar from "../../components/Avatar";
 import { Icon } from "@rneui/themed";
 import { useChatContext } from "stream-chat-expo";
 
@@ -9,42 +9,32 @@ const TradeScreen = () => {
 
   const [users, setUsers] = useState([]);
   const { client } = useChatContext();
+  const cards = 250;
 
   const fetchUsers = async () => {
     const response = await client.queryUsers({});
     setUsers(response.users);
   };
 
-  fetchUsers();
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-  // const getInitials = (fullName) => {
-  //   const allNames = fullName.trim().split(' ');
-  //   const initials = allNames.reduce((acc, curr, index) => {
-  //     if (index === 0 || index === allNames.length - 1) {
-  //       acc = `${acc}${curr.charAt(0).toUpperCase()}`;
-  //     }
-  //     return acc;
-  //   }, '');
-  //   return initials;
-  // }
-
-  // const RenderAvatar = (name) => {
-  //   const allNames = name.trim().split(' ');
-  //   const initials = allNames.reduce((acc, curr, index) => {
-  //     if (index === 0 || index === allNames.length - 1) {
-  //       acc = `${acc}${curr.charAt(0).toUpperCase()}`;
-  //     }
-  //     return initials;
-  //   }, '');
-
-  //   return (
-  //     <View>
-  //       <Text>
-  //         {initials}
-  //       </Text>
-  //     </View>
-  //   )
-  // }
+  const AlertSend = () => {
+    return Alert.alert("Sending cards", "Are you sure you want to send cards?", [
+      {
+        text: "Accept",
+        onPress: () => Alert.alert("Success", "You've successfully sent cards."),
+        style: "accept",
+      },
+      {
+        text: "Cancel",
+        onPress: () => Alert.alert("Send Failed", "Cancelled sending cards."),
+        style: "cancel",
+      },
+    ]);
+  };
+  console.log(users.online)
 
   return (
 
@@ -52,7 +42,7 @@ const TradeScreen = () => {
       flex: 1,
       justifyContent: 'space-between'
     }}>
-      <View>
+      <View style={{ padding: 15 }}>
         <View style={{
           flexDirection: 'row', alignItems: 'center', padding: 10
         }}>
@@ -60,13 +50,13 @@ const TradeScreen = () => {
             size={30}
             name="credit-card"
             color="#0d96ba" />
-          <Text style={{ fontSize: 20, color: "#0d96ba" }}>= 10</Text>
+          <Text style={{ fontSize: 20, color: "#0d96ba" }}>= {cards}</Text>
         </View>
         <View style={{
           justifyContent: 'center', width: '100%', alignItems: 'center', paddingVertical: 30
         }}>
           <Text style={{ fontSize: 20, color: "#0d96ba" }}>
-            You have 10 cards!!
+            You have {cards} cards!!
           </Text>
         </View>
         <View style={{ flexDirection: 'row', paddingVertical: 30 }}>
@@ -76,12 +66,12 @@ const TradeScreen = () => {
           <TextInput style={{ backgroundColor: 'white', paddingHorizontal: 10 }} />
           <Text style={{ fontSize: 20, color: "#0d96ba" }}> card(s) to:</Text>
         </View>
+        <View style={{ height: 350, width: '100%' }}>
+          <FlatList horizontal data={users}
+            renderItem={({ item }) => <Avatar user={item} onPress={ } />} />
+        </View>
       </View>
-      <View style={{
-        alignItems: 'center', justifyContent: 'center', paddingVertical: 50
-      }}>
-        {/* <FlatList horizontal data={users} renderItem={users.name} /> */}
-      </View>
+
       <View style={{
         justifyContent: 'center', alignItems: 'center', padding: 10
       }}>

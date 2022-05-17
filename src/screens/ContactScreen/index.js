@@ -14,7 +14,6 @@ const ContactScreen = () => {
     setIsLoading(true)
     const response = await client.queryUsers({});
     setUsers(response.users);
-    console.log(users)
     setIsLoading(false)
   };
 
@@ -22,15 +21,12 @@ const ContactScreen = () => {
     fetchUsers();
   }, []);
 
-  console.log(users)
-
   return (
     <View style={styles.container}>
       <FlatList data={users}
         renderItem={({ item }) => <UserListItem user={item} />}
         refreshing={isLoading}
-        onRefresh={fetchUsers}
-      />
+        onRefresh={fetchUsers} />
     </View>
   );
 };
@@ -44,5 +40,4 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center'
   }
-
 })
